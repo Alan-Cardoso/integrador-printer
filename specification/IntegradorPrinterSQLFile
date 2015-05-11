@@ -97,58 +97,58 @@ id_pessoa BIGINT
 Modificando as Tabelas NOT NULL
 ------------------------------------------------------
 */
-ALTER TABLE bancaprofessor MODIFY COLUMN id_banca BIGINT NOT NULL;
-ALTER TABLE bancaprofessor MODIFY COLUMN id_professor BIGINT NOT NULL;
-ALTER TABLE bancaprofessor MODIFY COLUMN tipo_professor ENUM('o','c','e') NOT NULL;
+ALTER TABLE bancaprofessor CHANGE COLUMN id_banca id_banca BIGINT NOT NULL;
+ALTER TABLE bancaprofessor CHANGE COLUMN id_professor id_professor BIGINT NOT NULL;
+ALTER TABLE bancaprofessor CHANGE COLUMN tipo_professor tipo_professor ENUM('o','c','e') NOT NULL;
 
-ALTER TABLE defesaaluno MODIFY COLUMN id_defesa_aluno INT NOT NULL;
-ALTER TABLE defesaaluno MODIFY COLUMN id_defesa BIGINT NOT NULL;
-ALTER TABLE defesaaluno MODIFY COLUMN id_aluno BIGINT NOT NULL;
-ALTER TABLE defesaaluno MODIFY COLUMN id_pesquisa_tipo_tcc BIGINT NOT NULL;
-ALTER TABLE defesaaluno MODIFY COLUMN id_banca BIGINT NOT NULL;
-ALTER TABLE defesaaluno MODIFY COLUMN id_defesa_comentario BIGINT NOT NULL;
-ALTER TABLE defesaaluno MODIFY COLUMN nota DECIMAL(3,1) NOT NULL;
-ALTER TABLE defesaaluno MODIFY COLUMN data DATETIME NOT NULL;
-ALTER TABLE defesaaluno MODIFY COLUMN tema VARCHAR(200) NOT NULL;
+ALTER TABLE defesaaluno CHANGE COLUMN id_defesa_aluno id_defesa_aluno INT NOT NULL;
+ALTER TABLE defesaaluno CHANGE COLUMN id_defesa id_defesa BIGINT NOT NULL;
+ALTER TABLE defesaaluno CHANGE COLUMN id_aluno id_aluno BIGINT NOT NULL;
+ALTER TABLE defesaaluno CHANGE COLUMN id_pesquisa_tipo_tcc id_pesquisa_tipo_tcc BIGINT NOT NULL;
+ALTER TABLE defesaaluno CHANGE COLUMN id_banca id_banca BIGINT NOT NULL;
+ALTER TABLE defesaaluno CHANGE COLUMN id_defesa_comentario id_defesa_comentario BIGINT NOT NULL;
+ALTER TABLE defesaaluno CHANGE COLUMN nota nota DECIMAL(3,1) NOT NULL;
+ALTER TABLE defesaaluno CHANGE COLUMN data data DATETIME NOT NULL;
+ALTER TABLE defesaaluno CHANGE COLUMN tema tema VARCHAR(200) NOT NULL;
 
-ALTER TABLE defesacomentario MODIFY COLUMN id_defesa_comentario BIGINT NOT NULL;
-ALTER TABLE defesacomentario MODIFY COLUMN id_professor_curso BIGINT NOT NULL;
-ALTER TABLE defesacomentario MODIFY COLUMN comentario VARCHAR NOT NULL;
+ALTER TABLE defesacomentario CHANGE COLUMN id_defesa_comentario id_defesa_comentario BIGINT NOT NULL;
+ALTER TABLE defesacomentario CHANGE COLUMN id_professor_curso id_professor_curso BIGINT NOT NULL;
+ALTER TABLE defesacomentario CHANGE COLUMN comentario comentario VARCHAR(500) NOT NULL;
 
-ALTER TABLE nivelusuario MODIFY COLUMN id_nivel_usuario BIGINT NOT NULL;
+ALTER TABLE nivelusuario CHANGE COLUMN id_nivel_usuario id_nivel_usuario BIGINT NOT NULL;
 
-ALTER TABLE usuario MODIFY COLUMN id_usuario BIGINT NOT NULL;
-ALTER TABLE usuario MODIFY COLUMN id_nivel_usuario BIGINT BIGINT NOT NULL;
-ALTER TABLE usuario MODIFY COLUMN login VARCHAR NOT NULL;
-ALTER TABLE usuario MODIFY COLUMN senha VARCHAR NOT NULL;
+ALTER TABLE usuario CHANGE COLUMN id_usuario id_usuario BIGINT NOT NULL;
+ALTER TABLE usuario CHANGE COLUMN id_nivel_usuario id_nivel_usuario BIGINT NOT NULL;
+ALTER TABLE usuario CHANGE COLUMN login login VARCHAR(45) NOT NULL;
+ALTER TABLE usuario CHANGE COLUMN senha senha VARCHAR(45) NOT NULL;
 
-ALTER TABLE pesquisatipotcc MODIFY COLUMN id_pesquisa_tipo_tcc BIGINT NOT NULL;
-ALTER TABLE pesquisatipotcc MODIFY COLUMN descricao VARCHAR NOT NULL;
+ALTER TABLE pesquisatipotcc CHANGE COLUMN id_pesquisa_tipo_tcc id_pesquisa_tipo_tcc BIGINT NOT NULL;
+ALTER TABLE pesquisatipotcc CHANGE COLUMN descricao descricao VARCHAR(45) NOT NULL;
 
-ALTER TABLE pessoa MODIFY COLUMN id_pessoa BIGINT NOT NULL;
-ALTER TABLE pessoa MODIFY COLUMN nome VARCHAR NOT NULL;
-ALTER TABLE pessoa MODIFY COLUMN cpf CHAR NOT NULL;
-ALTER TABLE pessoa MODIFY COLUMN sexo ENUM('m','f') NOT NULL;
-ALTER TABLE pessoa MODIFY COLUMN telefone CHAR NOT NULL;
-ALTER TABLE pessoa MODIFY COLUMN email VARCHAR NOT NULL;
-ALTER TABLE pessoa MODIFY COLUMN data_nascimento DATE NOT NULL;
+ALTER TABLE pessoa CHANGE COLUMN id_pessoa id_pessoa BIGINT NOT NULL;
+ALTER TABLE pessoa CHANGE COLUMN nome nome VARCHAR(200) NOT NULL;
+ALTER TABLE pessoa CHANGE COLUMN cpf cpf CHAR(11) NOT NULL;
+ALTER TABLE pessoa CHANGE COLUMN sexo sexo ENUM('m','f') NOT NULL;
+ALTER TABLE pessoa CHANGE COLUMN telefone telefone CHAR(15) NOT NULL;
+ALTER TABLE pessoa CHANGE COLUMN email email VARCHAR(45) NOT NULL;
+ALTER TABLE pessoa CHANGE COLUMN data_nascimento data_nascimento DATE NOT NULL;
 
-ALTER TABLE aluno MODIFY COLUMN id_aluno BIGINT NOT NULL;
-ALTER TABLE aluno MODIFY COLUMN id_pessoa BIGINT NOT NULL;
+ALTER TABLE aluno CHANGE COLUMN id_aluno id_aluno BIGINT NOT NULL;
+ALTER TABLE aluno CHANGE COLUMN id_pessoa id_pessoa BIGINT NOT NULL;
 
-ALTER TABLE alunocurso MODIFY COLUMN id_aluno_curso BIGINT NOT NULL;
-ALTER TABLE alunocurso MODIFY COLUMN id_aluno BIGINT NOT NULL;
-ALTER TABLE alunocurso MODIFY COLUMN id_curso BIGINT NOT NULL;
+ALTER TABLE alunocurso CHANGE COLUMN id_aluno_curso id_aluno_curso BIGINT NOT NULL;
+ALTER TABLE alunocurso CHANGE COLUMN id_aluno id_aluno BIGINT NOT NULL;
+ALTER TABLE alunocurso CHANGE COLUMN id_curso id_curso BIGINT NOT NULL;
 
-ALTER TABLE curso MODIFY COLUMN id_curso BIGINT NOT NULL;
-ALTER TABLE curso MODIFY COLUMN descricao VARCHAR NOT NULL;
+ALTER TABLE curso CHANGE COLUMN id_curso id_curso BIGINT NOT NULL;
+ALTER TABLE curso CHANGE COLUMN descricao descricao VARCHAR(45) NOT NULL;
 
-ALTER TABLE professorcurso MODIFY COLUMN id_professor_curso BIGINT NOT NULL;
-ALTER TABLE professorcurso MODIFY COLUMN id_curso BIGINT NOT NULL;
-ALTER TABLE professorcurso MODIFY COLUMN id_professor BIGINT NOT NULL;
+ALTER TABLE professorcurso CHANGE COLUMN id_professor_curso id_professor_curso BIGINT NOT NULL;
+ALTER TABLE professorcurso CHANGE COLUMN id_curso id_curso BIGINT NOT NULL;
+ALTER TABLE professorcurso CHANGE COLUMN id_professor id_professor BIGINT NOT NULL;
 
-ALTER TABLE professor MODIFY COLUMN id_professor BIGINT NOT NULL;
-ALTER TABLE professor MODIFY COLUMN id_pessoa BIGINT NOT NULL;
+ALTER TABLE professor CHANGE COLUMN id_professor id_professor BIGINT NOT NULL;
+ALTER TABLE professor CHANGE COLUMN id_pessoa id_pessoa BIGINT NOT NULL;
 /*
 ------------------------------------------------------
 Modificando as Tabelas UNIQUE:
@@ -161,19 +161,18 @@ ALTER TABLE aluno ADD CONSTRAINT ra_Unique UNIQUE (ra);
 Modificando as Tabelas AUTO_INCREMENT:
 ------------------------------------------------------
 */
-ALTER TABLE bancaprofessor MODIFY COLUMN id_banca BIGINT AUTO_INCREMENT;
-ALTER TABLE defesaaluno MODIFY COLUMN id_defesa_aluno INT AUTO_INCREMENT;
-ALTER TABLE defesacomentario MODIFY COLUMN id_defesa_comentario BIGINT AUTO_INCREMENT;
-ALTER TABLE nivelusuario MODIFY COLUMN id_nivel_usuario BIGINT AUTO_INCREMENT;
-ALTER TABLE usuario MODIFY COLUMN id_usuario BIGINT AUTO_INCREMENT;
-ALTER TABLE pesquisatipotcc MODIFY COLUMN id_pesquisa_tipo_tcc BIGINT AUTO_INCREMENT;
-ALTER TABLE pessoa MODIFY COLUMN id_pessoa BIGINT AUTO_INCREMENT;
-ALTER TABLE aluno MODIFY COLUMN id_aluno BIGINT AUTO_INCREMENT;
-ALTER TABLE alunocurso MODIFY COLUMN id_aluno_curso BIGINT AUTO_INCREMENT;
-ALTER TABLE curso MODIFY COLUMN id_curso BIGINT AUTO_INCREMENT;
-ALTER TABLE professorcurso MODIFY COLUMN id_professor_curso BIGINT AUTO_INCREMENT;
-ALTER TABLE professor MODIFY COLUMN id_professor BIGINT AUTO_INCREMENT;
-
+ALTER TABLE bancaprofessor CHANGE COLUMN id_banca id_banca BIGINT AUTO_INCREMENT;
+ALTER TABLE defesaaluno CHANGE COLUMN id_defesa_aluno id_defesa_aluno BIGINT AUTO_INCREMENT;
+ALTER TABLE defesacomentario CHANGE COLUMN id_defesa_comentario id_defesa_comentario BIGINT AUTO_INCREMENT;
+ALTER TABLE nivelusuario CHANGE COLUMN id_defesa_comentario id_defesa_comentario BIGINT AUTO_INCREMENT;
+ALTER TABLE usuario CHANGE COLUMN id_usuario id_usuario BIGINT AUTO_INCREMENT;
+ALTER TABLE pesquisatipotcc CHANGE COLUMN id_pesquisa_tipo_tcc id_pesquisa_tipo_tcc BIGINT AUTO_INCREMENT;
+ALTER TABLE pessoa CHANGE COLUMN id_pessoa id_pessoa BIGINT AUTO_INCREMENT;
+ALTER TABLE aluno CHANGE COLUMN id_aluno id_aluno BIGINT AUTO_INCREMENT;
+ALTER TABLE alunocurso CHANGE COLUMN id_aluno_curso id_aluno_curso BIGINT AUTO_INCREMENT;
+ALTER TABLE curso CHANGE COLUMN id_curso id_curso BIGINT AUTO_INCREMENT;
+ALTER TABLE professorcurso CHANGE COLUMN id_professor_curso id_professor_curso BIGINT AUTO_INCREMENT;
+ALTER TABLE professor CHANGE COLUMN id_professor id_professor BIGINT AUTO_INCREMENT;
 /*
 ------------------------------------------------------
 Adicionando Constraint PK:
